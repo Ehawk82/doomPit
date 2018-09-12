@@ -38,7 +38,8 @@
 		if (isFirstActivation) {
 			// TODO: The app was activated and had not been running. Do general startup initialization here.
 			document.addEventListener("visibilitychange", onVisibilityChanged);
-			args.setPromise(WinJS.UI.processAll());
+            args.setPromise(WinJS.UI.processAll());
+            myUI.init();
 		}
 
 		isFirstActivation = false;
@@ -55,7 +56,13 @@
 		// You might use the WinJS.Application.sessionState object, which is automatically saved and restored across suspension.
 		// If you need to complete an asynchronous operation before your application is suspended, call args.setPromise().
 	};
+    var myUI;
 
+    myUI = {
+        init: () => {
+            console.log("init");
+        }
+    };
 	app.start();
 
 })();
